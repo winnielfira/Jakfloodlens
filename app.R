@@ -25,6 +25,7 @@ source("server/dashboard_logic.R")
 ui <- div(
   useShinyjs(),
   tags$head(
+    tags$title("Jakfloodlens"),
     tags$script(HTML("
   $(document).ready(function() {
     $(document).on('shiny:connected', function() {
