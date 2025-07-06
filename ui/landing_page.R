@@ -481,7 +481,7 @@ landing_page_ui <- fluidPage(
               )
             ),
             tags$a(
-              href = "https://github.com/winnielfira/Jakfloodlens.git
+              href = "https://github.com/winnielfira/Jakfloodlens.git",
               target = "_blank",
               class = "card-button",
               style = "text-decoration: none;",
