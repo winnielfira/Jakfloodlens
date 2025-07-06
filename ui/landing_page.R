@@ -1,4 +1,4 @@
-# Flood Lens - Landing Page UI (Updated)
+# Flood Lens - Landing Page UI (Fixed Footer)
 
 landing_page_ui <- fluidPage(
   tags$head(
@@ -16,6 +16,15 @@ landing_page_ui <- fluidPage(
         background: linear-gradient(135deg, #001F3F 0%, #3A6D8C 100%);
         min-height: 100vh;
         overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container-fluid {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: none !important;
+        width: 100% !important;
       }
 
       .landing-container {
@@ -35,6 +44,8 @@ landing_page_ui <- fluidPage(
         z-index: 100;
         width: 100vw;
         margin-left: calc(-50vw + 50%);
+        left: 0;
+        right: 0;
       }
 
       .header-content {
@@ -91,14 +102,14 @@ landing_page_ui <- fluidPage(
         background: linear-gradient(135deg, #6A9AB0, #3A6D8C);
         color: white;
         border: none;
-        padding: 30px 80px;  /* EXTRA GEDE */
+        padding: 30px 80px;
         border-radius: 30px;
         font-weight: 700;
         cursor: pointer;
         transition: all 0.3s ease;
         text-transform: uppercase;
         letter-spacing: 2px;
-        font-size: 24px;  /* EXTRA GEDE */
+        font-size: 24px;
         box-shadow: 0 8px 25px rgba(0, 31, 63, 0.3);
       }
 
@@ -267,23 +278,30 @@ landing_page_ui <- fluidPage(
         transform: scale(1.05);
       }
 
-      /* Full-width footer */
+      /* Fixed Footer - Full Width */
       .landing-footer {
-        background: rgba(0, 31, 63, 0.9);
+        background: rgba(0, 31, 63, 0.95);
         backdrop-filter: blur(10px);
         color: white !important;
-        padding: 40px 20px 20px;
+        padding: 40px 0 20px;
         border-top: 1px solid rgba(234, 216, 177, 0.3);
         width: 100vw;
         margin-left: calc(-50vw + 50%);
+        margin-top: auto;
+        position: relative;
+        left: 0;
+        right: 0;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
       }
 
       .footer-main {
         text-align: center;
         margin-bottom: 30px;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
       }
 
       .footer-main h3 {
@@ -318,14 +336,17 @@ landing_page_ui <- fluidPage(
         border: 1px solid rgba(234, 216, 177, 0.3);
       }
 
-      .footer-bottom-dash p {
+      .footer-bottom-dash {
         text-align: center;
         padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-        color: white !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 20px;
+      }
+
+      .footer-bottom-dash p {
+        color: rgba(255, 255, 255, 0.7) !important;
         font-size: 12px;
-        max-width: 1200px;
-        margin: 0 auto;
+        margin: 0;
       }
 
       /* RESPONSIVE DESIGN */
@@ -365,6 +386,10 @@ landing_page_ui <- fluidPage(
           padding: 20px 40px;
           font-size: 16px;
         }
+
+        .footer-content {
+          padding: 0 15px;
+        }
       }
 
       @media (max-width: 480px) {
@@ -381,11 +406,11 @@ landing_page_ui <- fluidPage(
         }
 
         .landing-footer {
-          padding: 30px 15px 15px;
+          padding: 30px 0 15px;
         }
       }
     ")),
-
+    
     # JavaScript untuk navigasi cards
     tags$script(HTML("
       $(document).ready(function() {
@@ -418,7 +443,7 @@ landing_page_ui <- fluidPage(
         )
       )
     ),
-
+    
     # Main Content
     div(
       class = "landing-main",
@@ -437,8 +462,8 @@ landing_page_ui <- fluidPage(
           actionButton("enterDashboardMain", "Explore Dashboard", class = "main-cta-button")
         )
       ),
-
-      # Demo video section - MODIFIED
+      
+      # Demo video section
       h2(class = "section-title-dash", "Dokumentasi"),
       
       # Info boxes menggunakan style yang sama dengan dashboard cards
@@ -488,8 +513,8 @@ landing_page_ui <- fluidPage(
               "Lihat di GitHub"
             )
           )
-        ),
-      
+        )
+      ),
       
       # Dashboard Cards Section
       h2(class = "section-title-dash", "Dashboard Features"),
@@ -509,7 +534,7 @@ landing_page_ui <- fluidPage(
           ),
           actionButton("goToOverview", "Lihat Data", class = "card-button")
         ),
-
+        
         # Card 2: Metode Analisis
         div(
           class = "dashboard-card", id = "card-analysis",
@@ -524,7 +549,7 @@ landing_page_ui <- fluidPage(
           ),
           actionButton("goToAnalysis", "Lihat Penjelasan", class = "card-button")
         ),
-
+        
         # Card 3: Prediksi Real-time
         div(
           class = "dashboard-card", id = "card-prediction",
@@ -540,8 +565,8 @@ landing_page_ui <- fluidPage(
           actionButton("goToPrediction", "Prediksi Sekarang", class = "card-button")
         )
       ),
-
-      # Team Section - DIPERPANJANG + READY UNTUK IMAGES
+      
+      # Team Section
       div(
         id = "team", class = "team-section",
         h2(class = "section-title-dash", "Our Team"),
@@ -552,21 +577,19 @@ landing_page_ui <- fluidPage(
             class = "member-card-landing",
             div(
               class = "photo-placeholder-landing",
-              # GUNAKAN INI KALAU SUDAH ADA IMAGE:
               img(src = "images/ayu.PNG", alt = "Diah Ayu Nur Rahmadani", style = "width: 100%; height: 100%; object-fit: cover; border-radius: 13px;")
             ),
             div(
-              style = "padding: 20px 0;", # ← Padding diperbesar
+              style = "padding: 20px 0;",
               h4("Diah Ayu Nur Rahmadani", style = "color: #001F3F; font-weight: 600; margin: 0; text-align: center; font-size: 18px;")
             )
           ),
-
+          
           # Member 2
           div(
             class = "member-card-landing",
             div(
               class = "photo-placeholder-landing",
-              # GUNAKAN INI KALAU SUDAH ADA IMAGE:
               img(src = "images/razwa.PNG", alt = "Razwa Fazila Wibowo", style = "width: 100%; height: 100%; object-fit: cover; border-radius: 13px;")
             ),
             div(
@@ -574,13 +597,12 @@ landing_page_ui <- fluidPage(
               h4("Razwa Fazila Wibowo", style = "color: #001F3F; font-weight: 600; margin: 0; text-align: center; font-size: 18px;")
             )
           ),
-
+          
           # Member 3
           div(
             class = "member-card-landing",
             div(
               class = "photo-placeholder-landing",
-              # GUNAKAN INI KALAU SUDAH ADA IMAGE:
               img(src = "images/winni.PNG", alt = "Winni Elfira", style = "width: 100%; height: 100%; object-fit: cover; border-radius: 13px;")
             ),
             div(
@@ -591,26 +613,29 @@ landing_page_ui <- fluidPage(
         )
       )
     ),
-
+    
     # Footer
     div(
       class = "landing-footer",
       div(
-        class = "footer-main",
-        h3("Jakfloodlens"),
-        p("Sistem analisis dan prediksi dampak perubahan iklim terhadap banjir Jakarta menggunakan data science."),
+        class = "footer-content",
         div(
-          class = "footer-features",
-          span("Data Analysis"),
-          span("Interactive Maps"),
-          span("Real-time Prediction"),
-          span("Statistical Modeling")
+          class = "footer-main",
+          h3("Jakfloodlens"),
+          p("Sistem analisis dan prediksi dampak perubahan iklim terhadap banjir Jakarta menggunakan data science."),
+          div(
+            class = "footer-features",
+            span("Data Analysis"),
+            span("Interactive Maps"),
+            span("Real-time Prediction"),
+            span("Statistical Modeling")
+          )
+        ),
+        div(
+          class = "footer-bottom-dash",
+          p("© 2025 Jakfloodlens | Developed for Climate Change Analysis")
         )
-      ),
-      p("© 2025 Jakfloodlens | Developed for Climate Change Analysis",
-        style = "text-align: center; font-size: 12px; opacity: 0.8; margin: 0; color: white !important;"
       )
     )
   )
-)
 )
