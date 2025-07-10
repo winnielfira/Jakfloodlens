@@ -587,6 +587,58 @@ dashboard_ui <- dashboardPage(
           )
         ),
 
+        # JUDUL BAGIAN METADATA
+        h2("Metadata", style = "text-align: center; color: #001F3F !important; font-size: 36px; font-weight: 700; margin-bottom: 40px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);"),
+
+        # Info boxes menggunakan style yang sama dengan dashboard cards
+        div(
+          style = "max-width: 1200px; margin: 0 auto 60px; padding: 0 20px;",
+          div(
+            style = "display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-bottom: 40px;",
+            
+            # YouTube Box
+            div(
+              class = "dashboard-card",
+              div(
+                class = "card-content",
+                div(class = "card-icon", tags$i(class = "fa-solid fa-file")),
+                h3(class = "card-title", "Metadata Struktural"),
+                p(
+                  class = "card-description",
+                    "Lihat detail struktur data yang digunakan dalam dashboard ini, termasuk penjelasan setiap variabel, tipe data, dan sumber data untuk analisis iklim dan banjir Jakarta."
+                )
+              ),
+              tags$a(
+                href = "https://drive.google.com/open?id=1LSnbU5DPJ6xtM8Sz5CgJgx5HXdzhidqO&usp=drive_fs",
+                target = "_blank",
+                class = "card-button",
+                style = "text-decoration: none;",
+                "Lihat File"
+              )
+            ),
+            
+            # GitHub Box
+            div(
+              class = "dashboard-card",
+              div(
+                class = "card-content",
+                div(class = "card-icon", tags$i(class = "fa-solid fa-file")),
+                h3(class = "card-title", "Metadata Referensi"),
+                p(
+                  class = "card-description",
+                    "Lihat daftar referensi, sumber data, serta pustaka ilmiah yang digunakan dalam pengembangan dashboard ini. Metadata referensi mencakup tautan ke sumber data iklim, banjir, serta dokumentasi metodologi analisis yang menjadi dasar sistem Jakfloodlens."
+                )
+              ),
+              tags$a(
+                href = "https://drive.google.com/open?id=1WvKn0hqpXGN1HyRpyZAGWiLgXXgnwhh4&usp=drive_fs",
+                target = "_blank",
+                class = "card-button",
+                style = "text-decoration: none;",
+                "Lihat File"
+              )
+            )
+          )
+        ),
 
         # CUSTOM FOOTER
         div(
