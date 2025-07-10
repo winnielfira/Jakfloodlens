@@ -888,6 +888,7 @@ dashboard_ui <- dashboardPage(
           class = "section-header",
           h2("Model Regresi")
         ),
+        create_info_banner("Untuk alasan praktis, seluruh rekaman dalam data akan digunakan untuk membangun model regresi."),
         box(
           width = NULL, status = "primary", solidHeader = TRUE,
           title = "Model & Persamaan Regresi",
@@ -912,6 +913,7 @@ dashboard_ui <- dashboardPage(
           class = "section-header",
           h2("Ketepatan Model")
         ),
+        create_info_banner("Angka-angka berikut ini dihasilkan dengan membandingkan kelas sesungguhnya untuk setiap rekaman dan kelas hasil prediksi untuk rekaman tersebut (seluruh rekaman)."),
 
         # MODEL FITNESS METRICS & CONFUSION MATRIX
         box(
